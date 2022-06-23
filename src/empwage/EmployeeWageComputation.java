@@ -6,9 +6,13 @@ public class EmployeeWageComputation {
 		final int part_Time = 1;
 		final int full_Time = 2;
 		final int wage_per_Hour = 20;
-		int working_Hours = 0;
+		final int working_Days = 20;
+		
+		int total_Wage = 0;
+		for(int day=0;day <= working_Days;day++) {
+		
 		int empType = (int) (Math.random() * 100) % 3;
-
+		int working_Hours = 0;
 		switch (empType) {
 		case full_Time:
 			System.out.println("Employee is Present FullTime");
@@ -23,7 +27,11 @@ public class EmployeeWageComputation {
 
 		}
 		int wage = working_Hours * wage_per_Hour;
-		System.out.println("Employee daily Wage is " + wage);
+		System.out.println("Day "+day+" Wage is "+ wage);
+		total_Wage += wage;
+		
+		}
+		System.out.println("Total wage for a month is "+ total_Wage);
 
 	}
 }
