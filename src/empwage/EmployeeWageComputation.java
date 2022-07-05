@@ -15,46 +15,48 @@ public class EmployeeWageComputation {
 		int MonthlyWages = 0;
 		int workingDay = 1;
 		int day = 1;
+		int absent = 0;
 		int working_Hours = 0;
 		int totalWorkingHoursInMonth = 0;
-		System.out.printf("%5s		%5s		%5s		%5s\n","Day","Working_Hours","daily Wage","Total_Working_Hours\n\n");
-		//for(int day=1,total_working_Hours = 0;day <= WorkingDayInMonth && total_working_Hours < WorkingHourPerMonth; day++,total_working_Hours +=working_Hours) {
-		while (workingDay <= WorkingDayInMonth && totalWorkingHoursInMonth <= WorkingHourPerMonth) {
-		int empType = (int) (Math.random() * 100) % 3;
+		System.out.printf("%5s		%5s		%5s		%5s\n", "Day", "Working_Hours", "daily Wage","Total_Working_Hours\n\n");
 
-		switch (empType) {
+		for (int workingday = 1; day <= WorkingDayInMonth
+				&& totalWorkingHoursInMonth < WorkingHourPerMonth; workingday++) {
+			int empType = (int) (Math.random() * 100) % 3;
 
-		case full_Time:
-			System.out.println("Employee is Present FullTime\n");
-			working_Hours = 8;
+			switch (empType) {
+
+			case full_Time:
+				System.out.println("Employee is Present FullTime\n");
+				working_Hours = 8;
+				dailyWages = working_Hours * wage_per_Hour;
+				day++;
+
+				break;
+
+			case part_Time:
+				System.out.println("Employee Present PartTime\n");
+				working_Hours = 4;
+				day++;
+				break;
+
+			default:
+				System.out.println("Employee is Absent\n");
+				working_Hours = 0;
+				day++;
+				break;
+
+			}
 			dailyWages = working_Hours * wage_per_Hour;
 			MonthlyWages = dailyWages + MonthlyWages;
 			totalWorkingHoursInMonth = totalWorkingHoursInMonth + working_Hours;
-			break;
 
-		case part_Time:
-			System.out.println("Employee Present PartTime\n");
-			working_Hours = 4;
-			dailyWages = working_Hours * wage_per_Hour;
-			MonthlyWages = dailyWages + MonthlyWages;
-			totalWorkingHoursInMonth = totalWorkingHoursInMonth + working_Hours;
-			break;
-
-		default:
-			System.out.println("Employee is Absent\n");
-
-		}
-		day++;
-		workingDay++;
-
-
-
-		System.out.printf("%5d		%5d		%5d		%5d\n",day,working_Hours,dailyWages, totalWorkingHoursInMonth);
+			System.out.printf("%5d		%5d		%5d		%5d\n", day, working_Hours, dailyWages,totalWorkingHoursInMonth);
 		}
 
-		System.out.println("Total Working Hours of the Month : "+ totalWorkingHoursInMonth );
+		System.out.println("Total Working Hours of the Month : " + totalWorkingHoursInMonth + "Hours");
 		System.out.println();
-		System.out.println("Total wage for a month :  "+ MonthlyWages);
+		System.out.println("Total wage for a month :  " + MonthlyWages);
 
 	}
 }
